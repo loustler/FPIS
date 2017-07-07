@@ -1,16 +1,23 @@
 package chapter2
 
+import org.scalatest.FunSuite
+
 /**
   * @author loustler
   * @since 07/07/2017 22:14
   */
-object SortedTest extends App {
-  val arr = Array[Int](5, 6, 2, 1, 3, 4) // Not sorted
-  val sort = (x: Int, y: Int) => if (x > y) true else false
-
-  assert(Sorted.isSorted(arr, sort) == false)
-
-  val sortedArr = arr.sortWith(sort)
-
-  assert(Sorted.isSorted(sortedArr, sort) == true)
+class SortedTest extends FunSuite {
+  val sort = (x: Int, y: Int) => if (x < y) true else false
+  
+  test("sorted array should be true") {
+    val sortedArray = Array[Int](1, 2, 3, 4, 5)
+    
+    assert(Sorted.isSorted(sortedArray, sort) == true)
+  }
+  
+  test("unsorted array should be false") {
+    val unsortedArray = Array[Int](5, 3, 2, 1, 4)
+    
+    assert(Sorted.isSorted(unsortedArray, sort) == false)
+  }
 }
