@@ -1,5 +1,7 @@
 package chapter3
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -27,7 +29,7 @@ object List {
   
   // These is not quiz, but i think to need for test and etc..
   def size[A](x: List[A]): Int = {
-    
+    @tailrec
     def loop(i: Int, y: List[A]): Int = y match {
       case Nil => i
       case Cons(h, Nil) => i + 1
