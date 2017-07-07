@@ -1,0 +1,22 @@
+language: scala
+
+sudo: required
+
+env:
+  - JDK=oraclejdk8
+  - JDK=openjdk8
+
+scala:
+  - 2.12.0
+  - 2.12.1
+  - 2.12.2
+
+os: linux
+
+dist: trusty
+
+before_script:
+  - jdk_switcher use $JDK
+
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M -J-Xms1024M test

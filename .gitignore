@@ -1,4 +1,5 @@
 .*
-!.git*
 /*
+!.git*
 !/src
+!.travis.ymlg
