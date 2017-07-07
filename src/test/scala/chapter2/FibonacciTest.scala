@@ -1,4 +1,4 @@
-import chapter2.Fibonacci
+package chapter2
 
 /**
   * @author loustler

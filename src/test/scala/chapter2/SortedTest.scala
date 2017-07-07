@@ -1,4 +1,4 @@
-import chapter2.Sorted
+package chapter2
 
 /**
   * @author loustler
