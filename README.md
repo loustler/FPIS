@@ -14,6 +14,9 @@ Travis support to test by various version of scala test to it.
   - `2.12.2`
 
 
+The test tool is `scalatest`.
+
+
 # LICENSE
  This project under the Apache License 2.
 
