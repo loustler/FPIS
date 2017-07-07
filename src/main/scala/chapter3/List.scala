@@ -60,4 +60,26 @@ object List {
     case Cons(t, Nil) => Cons(e, Nil)
     case Cons(t, h) => Cons(e, h)
   }
+  
+  def drop[A](x: List[A], n: Int): List[A] = {
+    @tailrec
+    def loop(m: Int, y: List[A]): List[A] = y match {
+      case Nil => Nil
+      case Cons(h, Nil) => if (m > 0) Nil else y
+      case Cons(h, t) => if (m > 0) loop(m - 1, t) else y
+    }
+    
+    loop(n, x)
+  }
+  
+  def dropWhile[A](x: List[A], f: A => Boolean): List[A] = {
+    @tailrec
+    def loop(y: List[A]): List[A] = y match {
+      case Nil => Nil
+      case Cons(h, Nil) => if (f(h)) Nil else y
+      case Cons(h, t) => if (f(h)) loop(t) else y
+    }
+    
+    loop(x)
+  }
 }
