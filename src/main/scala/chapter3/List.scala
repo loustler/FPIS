@@ -24,4 +24,38 @@ object List {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
   }
+  
+  // These is not quiz, but i think to need for test and etc..
+  def size[A](x: List[A]): Int = {
+    
+    def loop(i: Int, y: List[A]): Int = y match {
+      case Nil => i
+      case Cons(h, Nil) => i + 1
+      case Cons(h, t) => loop(i + 1, t)
+    }
+    
+    loop(0, x)
+  }
+  
+  def getHead[A](x: List[A]): A = x match {
+    case Cons(h, _) => h
+  }
+  
+  def isEmpty[A](x: List[A]): Boolean = x match {
+    case Nil => true
+    case _ => false
+  }
+
+  // Quiz
+  def tail[A](x: List[A]): List[A] = x match {
+    case Nil => Nil
+    case Cons(t, Nil) => Nil
+    case Cons(t, h) => h
+  }
+  
+  def setHead[A](x: List[A], e: A): List[A] = x match {
+    case Nil => Cons(e, Nil)
+    case Cons(t, Nil) => Cons(e, Nil)
+    case Cons(t, h) => Cons(e, h)
+  }
 }
