@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/loustler/FPIS.svg?branch=master)](https://travis-ci.org/loustler/FPIS)
+
 # Hello
 The repository to store the source code that to solve some quiz from FPIS.
 
