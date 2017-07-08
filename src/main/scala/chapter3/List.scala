@@ -50,19 +50,21 @@ object List {
     case _   => false
   }
 
-  // Quiz
+  // exercise 3.2
   def tail[A](x: List[A]): List[A] = x match {
     case Nil          => Nil
     case Cons(t, Nil) => Nil
     case Cons(t, h)   => h
   }
 
+  // exercise 3.3
   def setHead[A](x: List[A], e: A): List[A] = x match {
     case Nil          => Cons(e, Nil)
     case Cons(t, Nil) => Cons(e, Nil)
     case Cons(t, h)   => Cons(e, h)
   }
 
+  // exercise 3.4
   def drop[A](x: List[A], n: Int): List[A] = {
     @tailrec
     def loop(m: Int, y: List[A]): List[A] = y match {
@@ -74,6 +76,7 @@ object List {
     loop(n, x)
   }
 
+  // exercise 3.5
   def dropWhile[A](x: List[A])(f: A => Boolean): List[A] = {
     @tailrec
     def loop(y: List[A]): List[A] = y match {
@@ -85,16 +88,19 @@ object List {
     loop(x)
   }
 
+  // exercise 3.6
   def init[A](x: List[A]): List[A] = x match {
     case Nil                   => Nil
     case Cons(h, Cons(e, Nil)) => Cons(h, Nil)
     case Cons(h, t)            => Cons(h, init(t))
   }
 
+  // exercise 3.9
   def length[A](x: List[A]): Int = {
     foldLeft(x, 0)((m, n) => m + 1)
   }
 
+  // exercise 3.10
   @tailrec
   def foldLeft[A, B](x: List[A], y: B)(f: (B, A) => B): B = x match {
     case Nil        => y
