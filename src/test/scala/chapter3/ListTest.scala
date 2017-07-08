@@ -7,6 +7,18 @@ import org.scalatest.FunSuite
   * @since 07/07/2017 23:39
   */
 class ListTest extends FunSuite {
+  test("The result sum all elements in list should be 15") {
+    val list = List(1, 2, 3, 4, 5)
+    
+    assert(List.sum(list) == 15)
+  }
+  
+  test("The result product all elements in list should be 120") {
+    val list = List(1.0, 2.0, 3.0, 4.0, 5.0)
+    
+    assert(List.product(list) == 120)
+  }
+  
   test("The size of list should be 5") {
     val list = List(1, 2, 3, 4, 5)
     
