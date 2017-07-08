@@ -118,7 +118,7 @@ object List {
   }
 
   // exercise 3.12, Its very awesome!
-  def foldRightWithFoldLeft_1[A, B](x: List[A], z: B)(f: (A, B) => B): B = {
-    foldLeft(x, (b: B) => b)((m, n) => b => m(f(b, n)))(z)
+  def foldRightWithFoldLeftAndHOF[A, B](x: List[A], z: B)(f: (A, B) => B): B = {
+    foldLeft(x, (b: B) => b)((v, a) => b => v(f(a, b)))(z)
   }
 }

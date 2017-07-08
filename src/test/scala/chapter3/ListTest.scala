@@ -85,4 +85,18 @@ class ListTest extends FunSuite {
 
     println(List.reverse(list))
   }
+
+  test("The list should be sum") {
+    val list = List(1, 2, 3, 4, 5)
+    val f = (x: Int, y: Int) => x + y
+
+    assert(List.foldRightWithFoldLeft(list, 0)(f) == 15)
+  }
+
+  test("The list should be sum with foldRightWithFoldLeftAndHOF") {
+    val list = List(1, 2, 3, 4, 5)
+    val f = (x: Int, y: Int) => x + y
+
+    assert(List.foldRightWithFoldLeftAndHOF(list, 0)(f) == 15)
+  }
 }
