@@ -77,7 +77,6 @@ class ListTest extends FunSuite {
     val list = List(1, 2, 3, 4)
     val f = (x: Int, y: Int) => x + y
 
-    println(List.foldLeft(list, 0)(f))
-//    assert(List.foldLeft(list, 0)(f) == 10)
+    assert(List.foldLeft(list, 0)(f) == 10)
   }
 }
