@@ -72,7 +72,7 @@ object List {
     loop(n, x)
   }
   
-  def dropWhile[A](x: List[A], f: A => Boolean): List[A] = {
+  def dropWhile[A](x: List[A])(f: A => Boolean): List[A] = {
     @tailrec
     def loop(y: List[A]): List[A] = y match {
       case Nil => Nil

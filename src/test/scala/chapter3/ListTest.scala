@@ -36,7 +36,7 @@ class ListTest extends FunSuite {
     
     val f = (n: Int) => n <= 5
     
-    val dropped = List.dropWhile(list, f)
+    val dropped = List.dropWhile(list)(f)
     
     assert(!List.isEmpty(list))
     assert(List.size(list) == 7)
