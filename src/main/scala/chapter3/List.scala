@@ -107,18 +107,27 @@ object List {
     case Cons(h, t) => foldLeft(t, f(y, h))(f)
   }
 
-  // exercise 3.11
+  // exercise 3.12
   def reverse[A](x: List[A]): List[A] = {
     foldLeft(x, Nil: List[A])((n, m) => Cons(m, n))
   }
 
-  // exercise 3.12
+  // exercise 3.13
   def foldRightWithFoldLeft[A, B](x: List[A], z: B)(f: (A, B) => B): B = {
     foldLeft(x, z)((b, a) => f(a, b))
   }
 
-  // exercise 3.12, Its very awesome!
+  // exercise 3.13, Its very awesome!
   def foldRightWithFoldLeftAndHOF[A, B](x: List[A], z: B)(f: (A, B) => B): B = {
     foldLeft(x, (b: B) => b)((v, a) => b => v(f(a, b)))(z)
+  }
+
+  // exercise 3.14
+  def append[A](x: List[A], a: A): List[A] = {
+    foldRight(x, Cons(a, Nil))((a, b) => Cons(a, b))
+  }
+
+  def increase(x: List[Int]): List[Int] = {
+    foldRight(x, Nil: List[Int])((a, b) => Cons(a + 1, b))
   }
 }

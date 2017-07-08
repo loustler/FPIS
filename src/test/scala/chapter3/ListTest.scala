@@ -99,4 +99,23 @@ class ListTest extends FunSuite {
 
     assert(List.foldRightWithFoldLeftAndHOF(list, 0)(f) == 15)
   }
+
+  test("The list should be append") {
+    val list = List(1, 2, 3, 4)
+    val appended = List.append(list, 5)
+
+    assert(List.size(list) == 4)
+    assert(List.size(appended) == 5)
+  }
+
+  test("The list elements shoudl be increased") {
+    val list = List(0, 1, 2, 3, 4)
+    val increased = List.increase(list)
+
+    println(increased)
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(increased))
+    assert(List.length(list) == 5)
+    assert(List.length(increased) == 5)
+  }
 }
