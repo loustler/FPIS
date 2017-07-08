@@ -11,20 +11,22 @@ case class Cons[+A](head: A, tail: List[A]) extends List[A]
   * @since 07/07/2017 23:22
   */
 object List {
-  def sum(x: List[Int]): Int = x match {
-    case Nil => 0
-    case Cons(x, xs) => x + sum(xs)
+  def sum(x: List[Int]): Int = {
+    foldRight(x, 0)((n, m) => n + m)
   }
 
-  def product(x: List[Double]): Double = x match {
-    case Nil => 1.0
-    case Cons(0.0, _) => 0.0
-    case Cons(x, y) => x * product(y)
+  def product(x: List[Double]): Double = {
+    foldRight(x, 1.0)((n, m) => n * m) // == foldRight(x, 1.0)(_ * _)
   }
 
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
+  }
+  
+  def foldRight[A, B](x: List[A], z: B)(f: (A, B) => B): B = x match {
+    case Nil => z
+    case Cons(h, t) => f(h, foldRight(t, z)(f))
   }
   
   // These is not quiz, but i think to need for test and etc..
