@@ -79,4 +79,10 @@ class ListTest extends FunSuite {
 
     assert(List.foldLeft(list, 0)(f) == 10)
   }
+
+  test("The list should be reverse") {
+    val list = List(1, 2, 3, 4)
+
+    println(List.reverse(list))
+  }
 }

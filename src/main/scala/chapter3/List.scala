@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 
 sealed trait List[+A]
 case object Nil extends List[Nothing]
-case class Cons[+A](head: A, tail: List[A]) extends List[A]
+case class Cons[+A](head: A, tail: List[A]) extends List[A] // tail is covariant
 
 /**
   * @author loustler
@@ -106,4 +106,17 @@ object List {
     case Nil        => y
     case Cons(h, t) => foldLeft(t, f(y, h))(f)
   }
+
+  // exercise 3.11
+  def reverse[A](x: List[A]): List[A] = {
+    foldLeft(x, Nil: List[A])((n, m) => Cons(m, n))
+  }
+
+  // exercise 3.12
+  def foldRightWithFoldLeft[A, B](x: List[A], z: B)(f: (A, B) => B): B = {
+    foldLeft(x, z)((b, a) => f(a, b))
+  }
+
+  // exercise 3.12, Its very awesome!
+  def foldRightWithFoldLeft_1[A, B](x: List[A], z: B)(f: (A, B) => B): B = {}
 }
