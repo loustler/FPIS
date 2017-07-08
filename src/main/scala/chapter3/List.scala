@@ -82,4 +82,10 @@ object List {
     
     loop(x)
   }
+  
+  def init[A](x: List[A]): List[A] = x match {
+    case Nil => Nil
+    case Cons(h, Cons(e, Nil)) => Cons(h, Nil)
+    case Cons(h, t) => Cons(h, init(t))
+  }
 }

@@ -43,4 +43,15 @@ class ListTest extends FunSuite {
     assert(!List.isEmpty(dropped))
     assert(List.size(dropped) == 2)
   }
+  
+  test("The iniited list should be 4") {
+    val list = List(1, 2, 3, 4, 5)
+    
+    val initted = List.init(list)
+    
+    assert(!List.isEmpty(list))
+    assert(List.size(list) == 5)
+    assert(!List.isEmpty(initted))
+    assert(List.size(initted) == 4)
+  }
 }
