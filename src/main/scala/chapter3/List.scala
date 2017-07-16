@@ -190,4 +190,11 @@ object List {
   def flatMap[A, B](x: List[A])(f: A => List[B]): List[B] = {
     flatten(map(x)(f))
   }
+
+  def filterByFlatMap[A](x: List[A])(f: A => Boolean): List[A] = {
+    flatMap(x)(h => {
+      if (f(h)) Cons(h, Nil)
+      else Nil
+    })
+  }
 }

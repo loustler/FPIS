@@ -233,4 +233,14 @@ class ListTest extends FunSuite {
     assert(!List.isEmpty(result))
     assertResult(result)(expect)
   }
+
+  test("The list should be filter by flatMap") {
+    val list = List(1, 2, 3, 4, 5, 6, 7, 8)
+    val result = List.filterByFlatMap(list)(x => x > 3)
+    val expect = List(4, 5, 6, 7, 8)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
 }
