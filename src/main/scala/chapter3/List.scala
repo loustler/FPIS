@@ -207,7 +207,7 @@ object List {
   }
 
   // exercise 3.23
-  def zipWith[A](x: List[A], y: List[A])(f: (A, A) => A): List[A] =
+  def zipWith[A, B, C](x: List[A], y: List[B])(f: (A, B) => C): List[C] =
     (x, y) match {
       case (Nil, _)                     => Nil
       case (_, Nil)                     => Nil
