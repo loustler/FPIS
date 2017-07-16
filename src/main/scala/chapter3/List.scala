@@ -137,4 +137,10 @@ object List {
     foldRight(x, Nil: List[String])((x, t) => Cons(x.toString, t))
 //    reverse(foldLeft(x, Nil: List[String])((t, x) => Cons(x.toString, t))) // It use foldLeft
   }
+
+  // exercise 3.18
+  def map[A, B](x: List[A])(f: A => B): List[B] = {
+    foldRight(x, Nil: List[B])((x, t) => Cons(f(x), t))
+//    reverse(foldLeft(x, Nil: List[B])((t, x) => Cons(f(x), t))) // It use foldLeft
+  }
 }
