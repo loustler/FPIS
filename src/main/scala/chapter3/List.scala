@@ -205,4 +205,12 @@ object List {
     case (_, Nil)                     => Nil
     case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1 + h2, addPairwise(t1, t2))
   }
+
+  // exercise 3.23
+  def zipWith[A](x: List[A], y: List[A])(f: (A, A) => A): List[A] =
+    (x, y) match {
+      case (Nil, _)                     => Nil
+      case (_, Nil)                     => Nil
+      case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
+    }
 }

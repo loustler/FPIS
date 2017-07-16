@@ -259,4 +259,28 @@ class ListTest extends FunSuite {
     assert(!List.isEmpty(result))
     assertResult(result)(expect)
   }
+
+  test("The pair of list should be producted by zipWith") {
+    val list1 = List(1, 2, 3, 4, 5)
+    val list2 = List(6, 7, 8, 9, 10)
+    val result = List.zipWith(list1, list2)((x, y) => x * y)
+    val expect = List(6, 14, 24, 36, 50)
+
+    assert(!List.isEmpty(list1))
+    assert(!List.isEmpty(list2))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
+
+  test("The pair of list should be subtracted by zipWith") {
+    val list1 = List(1, 2, 3, 4, 5)
+    val list2 = List(6, 7, 8, 9, 10)
+    val result = List.zipWith(list1, list2)((x, y) => y - x) // it like list2(0) - list1(0)
+    val expect = List(5, 5, 5, 5, 5)
+
+    assert(!List.isEmpty(list1))
+    assert(!List.isEmpty(list2))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
 }
