@@ -221,6 +221,7 @@ object List {
     }
 
   // exercise 3.24
+  @tailrec
   def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean =
     (sup, sub) match {
       case (Nil, Nil)        => false
