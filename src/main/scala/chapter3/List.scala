@@ -129,6 +129,20 @@ object List {
     foldRight(x, Cons(a, Nil))((a, b) => Cons(a, b))
   }
 
+  // exercise 3.1
+  def flatten[A](x: List[List[A]]): List[A] = {
+    foldRight(x, Nil: List[A])((x, t) => {
+      foldRight(x, t)((xx, tt) => Cons(xx, tt))
+    })
+  }
+
+  // exercise 3.15, it use foldLeft.  I think it is bad performance more than flatten. I'm not recommend to use it.
+  def flattenByFoldLeft[A](x: List[List[A]]): List[A] = {
+    reverse(foldLeft(x, Nil: List[A])((x, t) => {
+      reverse(foldLeft(x, t)((tt, xx) => Cons(xx, tt)))
+    }))
+  }
+
   // exercise 3.16
   def increase(x: List[Int]): List[Int] = {
     foldRight(x, Nil: List[Int])((a, b) => Cons(a + 1, b))

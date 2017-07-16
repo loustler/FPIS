@@ -108,6 +108,26 @@ class ListTest extends FunSuite {
     assert(List.size(appended) == 5)
   }
 
+  test("The list should be flatten") {
+    val list = List(List(1, 2, 3, 4, 5), List(6, 7, 8, 9, 10))
+    val result = List.flatten(list)
+    val expect = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
+
+  test("The list should be flatten By foldLeft") {
+    val list = List(List(1, 2, 3, 4, 5), List(6, 7, 8, 9, 10))
+    val result = List.flattenByFoldLeft(list)
+    val expect = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
+
   test("The list elements shoudl be increased") {
     val list = List(0, 1, 2, 3, 4)
     val increased = List.increase(list)
