@@ -185,4 +185,9 @@ object List {
       })
     )
   }
+
+  // exercise 3.20
+  def flatMap[A, B](x: List[A])(f: A => List[B]): List[B] = {
+    flatten(map(x)(f))
+  }
 }

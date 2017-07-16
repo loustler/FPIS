@@ -223,4 +223,14 @@ class ListTest extends FunSuite {
     assert(!List.isEmpty(result))
     assertResult(result)(expect)
   }
+
+  test("The list should be has same elements") {
+    val list = List(1, 2, 3, 4, 5)
+    val result = List.flatMap(list)(i => List(i, i))
+    val expect = List(1, 1, 2, 2, 3, 3, 4, 4, 5, 5)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
 }
