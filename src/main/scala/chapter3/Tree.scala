@@ -14,7 +14,4 @@ object Tree {
     case Leaf(_)      => 1
     case Branch(l, r) => 1 + size(l) + size(r)
   }
-
-  // exercise 3.26
-  def
 }
