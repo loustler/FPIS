@@ -127,7 +127,14 @@ object List {
     foldRight(x, Cons(a, Nil))((a, b) => Cons(a, b))
   }
 
+  // exercise 3.16
   def increase(x: List[Int]): List[Int] = {
     foldRight(x, Nil: List[Int])((a, b) => Cons(a + 1, b))
+  }
+
+  // exercise 3.17
+  def doubleToString(x: List[Double]): List[String] = {
+    foldRight(x, Nil: List[String])((x, t) => Cons(x.toString, t))
+//    reverse(foldLeft(x, Nil: List[String])((t, x) => Cons(x.toString, t))) // It use foldLeft
   }
 }

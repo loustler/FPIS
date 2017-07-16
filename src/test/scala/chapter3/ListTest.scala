@@ -112,10 +112,19 @@ class ListTest extends FunSuite {
     val list = List(0, 1, 2, 3, 4)
     val increased = List.increase(list)
 
-    println(increased)
     assert(!List.isEmpty(list))
     assert(!List.isEmpty(increased))
     assert(List.length(list) == 5)
     assert(List.length(increased) == 5)
+  }
+
+  test("The double list should be change string list") {
+    val list = List[Double](0, 1, 2, 3, 4, 5, 6, 7)
+    val stringList = List.doubleToString(list)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(stringList))
+    assert(List.getHead(stringList) != List.getHead(list))
+    assert(List.getHead(stringList) == List.getHead(list).toString)
   }
 }
