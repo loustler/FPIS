@@ -42,6 +42,8 @@ object List {
   }
 
   def getHead[A](x: List[A]): A = x match {
+    case Nil =>
+      sys.error("Can not find head element, cause the given list is Nil.")
     case Cons(h, _) => h
   }
 
