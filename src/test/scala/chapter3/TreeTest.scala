@@ -70,4 +70,56 @@ class TreeTest extends FunSuite {
 
     assert(Tree.depth(tree) == 3)
   }
+
+  test("The tree should be string") {
+    val tree = Branch(
+      Branch(
+        Branch(
+          Leaf(3),
+          Leaf(6)
+        ),
+        Branch(
+          Leaf(4),
+          Leaf(2)
+        )
+      ),
+      Branch(
+        Branch(
+          Leaf(1),
+          Leaf(5)
+        ),
+        Branch(
+          Leaf(7),
+          Leaf(9)
+        )
+      )
+    )
+
+    val result = Tree.map(tree)(t => t.toString)
+
+    val exepct = Branch(
+      Branch(
+        Branch(
+          Leaf("3"),
+          Leaf("6")
+        ),
+        Branch(
+          Leaf("4"),
+          Leaf("2")
+        )
+      ),
+      Branch(
+        Branch(
+          Leaf("1"),
+          Leaf("5")
+        ),
+        Branch(
+          Leaf("7"),
+          Leaf("9")
+        )
+      )
+    )
+
+    assertResult(result)(exepct)
+  }
 }
