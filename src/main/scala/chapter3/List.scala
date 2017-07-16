@@ -191,10 +191,18 @@ object List {
     flatten(map(x)(f))
   }
 
+  // exercise 3.21
   def filterByFlatMap[A](x: List[A])(f: A => Boolean): List[A] = {
     flatMap(x)(h => {
       if (f(h)) Cons(h, Nil)
       else Nil
     })
+  }
+
+  // exercise 3.22, It use pattern matching for pair list. Its awesome!
+  def addPairwise(x: List[Int], y: List[Int]): List[Int] = (x, y) match {
+    case (Nil, _)                     => Nil
+    case (_, Nil)                     => Nil
+    case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1 + h2, addPairwise(t1, t2))
   }
 }

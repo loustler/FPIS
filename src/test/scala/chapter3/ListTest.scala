@@ -82,8 +82,12 @@ class ListTest extends FunSuite {
 
   test("The list should be reverse") {
     val list = List(1, 2, 3, 4)
+    val result = List.reverse(list)
+    val expect = List(4, 3, 2, 1)
 
-    println(List.reverse(list))
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
   }
 
   test("The list should be sum") {
@@ -240,6 +244,18 @@ class ListTest extends FunSuite {
     val expect = List(4, 5, 6, 7, 8)
 
     assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
+
+  test("The pair of list should be added each elements in same index") {
+    val list1 = List(1, 2, 3, 4, 5)
+    val list2 = List(6, 7, 8, 9, 10)
+    val result = List.addPairwise(list1, list2)
+    val expect = List(7, 9, 11, 13, 15)
+
+    assert(!List.isEmpty(list1))
+    assert(!List.isEmpty(list2))
     assert(!List.isEmpty(result))
     assertResult(result)(expect)
   }
