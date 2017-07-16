@@ -21,4 +21,26 @@ class TreeTest extends FunSuite {
 
     assert(Tree.size(tree) == 1)
   }
+
+  test("The maximum should be  44") {
+    val tree = Branch(
+      Branch(
+        Branch(Leaf(3), Leaf(5)),
+        Branch(Leaf(2), Leaf(3))
+      ),
+      Branch(
+        Branch(Leaf(24), Leaf(40)),
+        Branch(
+          Leaf(35),
+          Branch(
+            Leaf(29),
+            Leaf(44)
+          )
+        )
+      )
+    )
+    val result = Tree.maximum(tree)
+
+    assert(result == 44)
+  }
 }
