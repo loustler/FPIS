@@ -43,4 +43,31 @@ class TreeTest extends FunSuite {
 
     assert(result == 44)
   }
+
+  test("The depth of list should be 3") {
+    val tree = Branch(
+      Branch(
+        Branch(
+          Leaf(3),
+          Leaf(6)
+        ),
+        Branch(
+          Leaf(4),
+          Leaf(2)
+        )
+      ),
+      Branch(
+        Branch(
+          Leaf(1),
+          Leaf(5)
+        ),
+        Branch(
+          Leaf(7),
+          Leaf(9)
+        )
+      )
+    )
+
+    assert(Tree.depth(tree) == 3)
+  }
 }
