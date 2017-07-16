@@ -137,13 +137,21 @@ object List {
   // exercise 3.17
   def doubleToString(x: List[Double]): List[String] = {
     foldRight(x, Nil: List[String])((x, t) => Cons(x.toString, t))
-//    reverse(foldLeft(x, Nil: List[String])((t, x) => Cons(x.toString, t))) // It use foldLeft
+  }
+
+  // exercise 3.17, it use foldLeft
+  def doubleToStringByFoldLeft(x: List[Double]): List[String] = {
+    reverse(foldLeft(x, Nil: List[String])((t, x) => Cons(x.toString, t)))
   }
 
   // exercise 3.18
   def map[A, B](x: List[A])(f: A => B): List[B] = {
     foldRight(x, Nil: List[B])((x, t) => Cons(f(x), t))
-//    reverse(foldLeft(x, Nil: List[B])((t, x) => Cons(f(x), t))) // It use foldLeft
+  }
+
+  // exercise 3.18, it use foldLeft
+  def mapByFoldLeft[A, B](x: List[A])(f: A => B): List[B] = {
+    reverse(foldLeft(x, Nil: List[B])((t, x) => Cons(f(x), t)))
   }
 
   // exercise 3.19

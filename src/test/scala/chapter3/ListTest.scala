@@ -129,6 +129,17 @@ class ListTest extends FunSuite {
     assert(List.getHead(stringList) == List.getHead(list).toString)
   }
 
+  test("The double list should be change string list by foldLeft") {
+    val list = List[Double](0, 1, 2, 3, 4, 5, 6, 7)
+    val stringList = List.doubleToStringByFoldLeft(list)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(stringList))
+    assert(List.getHead(stringList) != List.getHead(list))
+    assert(!List.getHead(stringList).equals(List.getHead(list)))
+    assert(List.getHead(stringList) == List.getHead(list).toString)
+  }
+
   test("The Integer list should be string list") {
     val list = List(1, 2, 3, 4, 5, 6, 7, 8)
     val stringList = List.map(list)(x => x.toString)
@@ -139,9 +150,31 @@ class ListTest extends FunSuite {
     assert(List.getHead(stringList) == List.getHead(list).toString)
   }
 
+  test("The Integer list should be string list by foldLeft") {
+    val list = List(1, 2, 3, 4, 5, 6, 7, 8)
+    val stringList = List.mapByFoldLeft(list)(x => x.toString)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(stringList))
+    assert(!List.getHead(stringList).equals(List.getHead(list)))
+    assert(List.getHead(stringList) == List.getHead(list).toString)
+  }
+
   test("The Integer list to double list") {
     val list = List(1, 2, 3, 4, 5, 6, 7, 8)
     val doubleListByMap = List.map(list)(n => n.toDouble)
+    val doubleList = List[Double](1, 2, 3, 4, 5, 6, 7, 8)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(doubleListByMap))
+    assert(!List.getHead(doubleList).equals(List.getHead(list)))
+    assert(List.getHead(doubleList) == List.getHead(list).toDouble)
+    assertResult(doubleListByMap)(doubleList)
+  }
+
+  test("The Integer list to double list by foldLeft") {
+    val list = List(1, 2, 3, 4, 5, 6, 7, 8)
+    val doubleListByMap = List.mapByFoldLeft(list)(n => n.toDouble)
     val doubleList = List[Double](1, 2, 3, 4, 5, 6, 7, 8)
 
     assert(!List.isEmpty(list))
