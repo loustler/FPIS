@@ -283,4 +283,40 @@ class ListTest extends FunSuite {
     assert(!List.isEmpty(result))
     assertResult(result)(expect)
   }
+
+  test("The list should has element") {
+    val list = List(1, 3, 5, 7, 9)
+    val result = List.has(list, 5)
+
+    assert(!List.isEmpty(list))
+    assert(result)
+  }
+
+  test("The list should has no element") {
+    val list = List(1, 3, 5, 7, 9)
+    val result = List.has(list, 6)
+
+    assert(!List.isEmpty(list))
+    assert(!result)
+  }
+
+  test("The list should has subsequence") {
+    val list = List(1, 2, 3, 4, 5)
+    val subsequence = List(5, 2)
+    val result = List.hasSubsequence(list, subsequence)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(subsequence))
+    assert(result)
+  }
+
+  test("The list should has no subsequence") {
+    val list = List(1, 2, 3, 4, 5)
+    val subsequence = List(7, 8)
+    val result = List.hasSubsequence(list, subsequence)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(subsequence))
+    assert(!result)
+  }
 }

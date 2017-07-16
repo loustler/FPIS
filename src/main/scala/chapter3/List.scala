@@ -52,6 +52,12 @@ object List {
     case _   => false
   }
 
+  def has[A](x: List[A], e: A): Boolean = x match {
+    case Nil          => sys.error("The given list is Nil")
+    case Cons(h, Nil) => if (h == e) true else false
+    case Cons(h, t)   => if (h == e) true else has(t, e)
+  }
+
   // exercise 3.2
   def tail[A](x: List[A]): List[A] = x match {
     case Nil          => Nil
@@ -212,5 +218,15 @@ object List {
       case (Nil, _)                     => Nil
       case (_, Nil)                     => Nil
       case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
+    }
+
+  // exercise 3.24
+  def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean =
+    (sup, sub) match {
+      case (Nil, Nil)        => false
+      case (Nil, _)          => false
+      case (_, Nil)          => false
+      case (l, Cons(h, Nil)) => has(l, h)
+      case (l, Cons(h, t))   => if (has(l, h)) true else hasSubsequence(l, t)
     }
 }
