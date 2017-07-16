@@ -150,4 +150,24 @@ class ListTest extends FunSuite {
     assert(List.getHead(doubleList) == List.getHead(list).toDouble)
     assertResult(doubleListByMap)(doubleList)
   }
+
+  test("The integer list should be greater than 3") {
+    val list = List(1, 2, 3, 4, 5, 6, 7, 8)
+    val result = List.filter(list)(x => x > 3)
+    val expect = List(4, 5, 6, 7, 8)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
+
+  test("The integer list should be greate than 3 by foldLeft") {
+    val list = List(1, 2, 3, 4, 5, 6, 7, 8)
+    val result = List.filterByFoldLeft(list)(x => x > 3)
+    val expect = List(4, 5, 6, 7, 8)
+
+    assert(!List.isEmpty(list))
+    assert(!List.isEmpty(result))
+    assertResult(result)(expect)
+  }
 }

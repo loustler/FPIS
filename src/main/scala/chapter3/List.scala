@@ -145,4 +145,22 @@ object List {
     foldRight(x, Nil: List[B])((x, t) => Cons(f(x), t))
 //    reverse(foldLeft(x, Nil: List[B])((t, x) => Cons(f(x), t))) // It use foldLeft
   }
+
+  // exercise 3.19
+  def filter[A](x: List[A])(f: A => Boolean): List[A] = {
+    foldRight(x, Nil: List[A])((x, t) => {
+      if (f(x)) Cons(x, t)
+      else t
+    })
+  }
+
+  // exercise 3.19, It use foldLeft
+  def filterByFoldLeft[A](x: List[A])(f: A => Boolean): List[A] = {
+    reverse(
+      foldLeft(x, Nil: List[A])((t, x) => {
+        if (f(x)) Cons(x, t)
+        else t
+      })
+    )
+  }
 }
