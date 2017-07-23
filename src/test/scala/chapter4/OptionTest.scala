@@ -94,4 +94,41 @@ class OptionTest extends FunSuite {
     assert(result equals expected)
     assert(result == expected)
   }
+
+  test("The list of option should be the option has list") {
+    val ol = List(
+      Some(1),
+      Some(2),
+      Some(3),
+      Some(5),
+      Some(6),
+      Some(7),
+      Some(8),
+      Some(9)
+    )
+
+    val result = Option.sequence(ol)
+    val expected = Some(List(1, 2, 3, 5, 6, 7, 8, 9))
+
+    assert(expected equals result)
+    assert(expected == result)
+
+    val ol2 = List(
+      Some(1),
+      Some(2),
+      Some(3),
+      None,
+      Some(5),
+      Some(6),
+      Some(7),
+      Some(8),
+      Some(9)
+    )
+
+    val result2 = Option.sequence(ol2)
+    val expected2 = None
+
+    assert(expected2 equals result2)
+    assert(expected2 == result2)
+  }
 }
