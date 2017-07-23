@@ -83,4 +83,15 @@ class OptionTest extends FunSuite {
 
     assert(op.getOrElse(6) == v)
   }
+
+  test("The Option(5) and The option(6) are should be Option(11)") {
+    val a = Option(5)
+    val b = Option(6)
+
+    val result = Option.map2(a, b)((aa, bb) => aa + bb)
+    val expected = Option(11)
+
+    assert(result equals expected)
+    assert(result == expected)
+  }
 }

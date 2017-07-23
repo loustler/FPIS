@@ -40,6 +40,37 @@ object Option {
   def variance(xs: Seq[Double]): Option[Double] = {
     mean(xs) flatMap (d => mean(xs.map(x => math.pow(x - d, 2))))
   }
+
+  /*
+  def insuranceRateQuote(age: Int, numberOfSpeedTickets: Int): Double
+
+  def parseInsuranceRateQuote(
+      age: String,
+      numberOfSpeedingTickets: String): Option[Double] = {
+    val optAge: Option[Int] = Try(age.toInt)
+
+    val optTickets: Option[Int] = Try(numberOfSpeedingTickets.toInt)
+
+    insuranceRateQuote(optAge, optTickets)
+  }
+
+  def Try[A](a: => A): Option[A] = {
+    try Some(a)
+    catch { case e: Exception => None }
+  }
+   */
+
+  // exercise 4-3
+  def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = {
+
+    /**
+      * a flatMap (x => Option(x))
+      * a flatMap (x => C) C combine with a and b
+      * a flatMap (x => b map (y => Option[C])) // x is a(aa), y is b(bb)
+      * a flatMap (x => b map (y => f(x, y)) // It will be Option(f(a(x),a(y)))
+      */
+    a flatMap (aa => b map (bb => f(aa, bb)))
+  }
 }
 
 sealed trait Option[+A] {
