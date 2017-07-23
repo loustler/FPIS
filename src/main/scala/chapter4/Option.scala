@@ -41,8 +41,9 @@ object Option {
     mean(xs) flatMap (d => mean(xs.map(x => math.pow(x - d, 2))))
   }
 
-  /*
-  def insuranceRateQuote(age: Int, numberOfSpeedTickets: Int): Double
+  def insuranceRateQuote(age: Int, numberOfSpeedTickets: Int): Double = {
+    age * numberOfSpeedTickets
+  }
 
   def parseInsuranceRateQuote(
       age: String,
@@ -51,14 +52,13 @@ object Option {
 
     val optTickets: Option[Int] = Try(numberOfSpeedingTickets.toInt)
 
-    insuranceRateQuote(optAge, optTickets)
+    map2(optAge, optTickets)(insuranceRateQuote)
   }
 
   def Try[A](a: => A): Option[A] = {
     try Some(a)
     catch { case e: Exception => None }
   }
-   */
 
   // exercise 4-3
   def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = {
