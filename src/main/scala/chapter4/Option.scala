@@ -35,6 +35,11 @@ object Option {
     else
       Some(a)
   }
+
+  // exercise 4-2
+  def variance(xs: Seq[Double]): Option[Double] = {
+    mean(xs) flatMap (d => mean(xs.map(x => math.pow(x - d, 2))))
+  }
 }
 
 sealed trait Option[+A] {
