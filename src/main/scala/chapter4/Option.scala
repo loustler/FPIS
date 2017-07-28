@@ -106,6 +106,8 @@ sealed trait Option[+A] {
     case Some(a) if f(a) => this
     case _               => None
   }
+
+  def lift[A, B](f: A => B): Option[A] => Option[B] = _ map f
 }
 
 case class Some[+A](get: A) extends Option[A]
