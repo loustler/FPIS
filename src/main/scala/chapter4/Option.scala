@@ -77,6 +77,9 @@ object Option {
     case Nil    => Some(Nil)
     case h :: t => h flatMap (hh => sequence(t) map (hh :: _))
   }
+
+  def parseInts(a: List[String]): Option[List[Int]] =
+    sequence(a map (s => Try(s.toInt)))
 }
 
 sealed trait Option[+A] {

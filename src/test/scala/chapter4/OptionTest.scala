@@ -131,4 +131,52 @@ class OptionTest extends FunSuite {
     assert(expected2 equals result2)
     assert(expected2 == result2)
   }
+
+  test("The List of Some but have a None should be None") {
+    val origin = List(
+      Some(1),
+      Some(2),
+      Some(3),
+      Some(4),
+      None,
+      Some(5),
+      Some(6)
+    )
+
+    val result = Option sequence origin
+    val expected = None
+
+    assert(result equals expected)
+  }
+
+  test("The list of string should be int list") {
+    val sl = List(
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    )
+
+    val result = Option parseInts sl
+    val expected = Some(List(1, 2, 3, 4, 5))
+
+    assert(result equals expected)
+    assert(result == expected)
+  }
+
+  test("The list of string that cannot to be int should be None") {
+    val sl = List(
+      "1",
+      "2",
+      "3",
+      "hello",
+      "5"
+    )
+
+    val result = Option parseInts sl
+    val expected = None
+
+    assert(result equals expected)
+  }
 }
