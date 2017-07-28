@@ -228,4 +228,16 @@ class OptionTest extends FunSuite {
     assert(result equals expected)
     assert(result == expected)
   }
+
+  test("The option of string should be int option with a for comprehension") {
+    val so = Some("5")
+    val so2 = Some("11")
+
+    val result =
+      Option.map2WithForComp(so, so2)((s1, s2) => s1.toInt * s2.toInt)
+    val expected = Some(55)
+
+    assert(result equals expected)
+    assert(result == expected)
+  }
 }

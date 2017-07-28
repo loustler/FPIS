@@ -95,6 +95,14 @@ object Option {
     case Nil    => Some(Nil)
     case h :: t => map2(f(h), traverseWithPatternMatching(t)(f))(_ :: _)
   }
+
+  def map2WithForComp[A, B, C](a: Option[A], b: Option[B])(
+      f: (A, B) => C): Option[C] = {
+    for {
+      aa <- a
+      bb <- b
+    } yield f(aa, bb)
+  }
 }
 
 sealed trait Option[+A] {
