@@ -179,4 +179,53 @@ class OptionTest extends FunSuite {
 
     assert(result equals expected)
   }
+
+  test("The list of string should be int list in the option") {
+    val sl = List(
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    )
+
+    val result = Option.traverse(sl)(s => Option Try (s.toInt))
+    val expected = Some(
+      List(
+        1,
+        2,
+        3,
+        4,
+        5
+      )
+    )
+
+    assert(result equals expected)
+    assert(result == expected)
+  }
+
+  test("The list of int should be string list in the option") {
+    val il = List(
+      1,
+      2,
+      3,
+      4,
+      5
+    )
+
+    val result =
+      Option.traverseWithPatternMatching(il)(i => Option Try i.toString)
+    val expected = Some(
+      List(
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      )
+    )
+
+    assert(result equals expected)
+    assert(result == expected)
+  }
 }
