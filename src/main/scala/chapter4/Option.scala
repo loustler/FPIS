@@ -85,6 +85,8 @@ object Option {
   def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = {
     a.foldRight[Option[List[B]]](Some(Nil))((h, t) =>
       map2(t, f(h))((tt, hh) => hh :: tt))
+//    a.foldLeft[Option[List[B]]](Some(Nil))((t, h) =>
+//      map2(t, f(h))((tt, hh) => hh :: tt)) // It have to reverse
   }
 
   // exercise 4-5
