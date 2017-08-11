@@ -12,6 +12,7 @@ Travis support to test by various version of scala test to it.
   - `2.12.0`
   - `2.12.1`
   - `2.12.2`
+  - `2.12.3`
 
 
 The test tool is `scalatest`.
