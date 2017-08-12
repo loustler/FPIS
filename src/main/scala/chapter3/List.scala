@@ -54,7 +54,7 @@ object List {
 
   def has[A](x: List[A], e: A): Boolean = x match {
     case Nil          => sys.error("The given list is Nil")
-    case Cons(h, Nil) => if (h == e) true else false
+    case Cons(h, Nil) => h == e
     case Cons(h, t)   => if (h == e) true else has(t, e)
   }
 
